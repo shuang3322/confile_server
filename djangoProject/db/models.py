@@ -7,3 +7,6 @@ class User(models.Model):
 class CONF_PATH(models.Model):
     path = models.CharField(max_length=500)
     file = models.CharField(max_length=255,null=True)
+class LOG(models.Model):
+    log_name = models.CharField(max_length=255,null=True)
+    log_time = models.DateField(null=True)
