@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table align="center" border="1">
+
+<thead>
+            <tr>
+                <th>路径</th>
+                <th>文件名</th>
+            </tr>
+</thead>
+
+<tbody>
+{%for item in items%}
+<tr>
+    <td>{{item.path}}</td>
+    <td>{{item.file}}</td>
+</tr>
+ {% endfor %}
+</tbody>
+
+</table>
+</body>
+</html>
+{#<form method='post'>#}
+{#{% csrf_token %}#}
+{#{{ form }}#}
+{#<input type="submit" value="提交">#}
+</form>
+</body>
+</html>

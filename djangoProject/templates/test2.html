@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>wangEditor 菜单和编辑器区域分离</title>
+    <style type="text/css">
+        .toolbar {
+            border: 1px solid #ccc;
+        }
+        .text {
+            border: 1px solid #ccc;
+            height: 600px;
+            width:100%
+        }
+    </style>
+</head>
+<body>
+    <div id="div1" class="toolbar">
+    </div>
+    <div style="padding: 15px 0; color: #ccc;" >中间隔离带</div>
+    <div id="div2" class="text" ethod="post" >
+        {%for item in text%}
+            <p> {{ item }}</p>
+        {% endfor %}
+    </div>
+{#    <textarea id="i3"  cols="200" rows="50">#}
+{#        {%for item in text%}#}
+{#             {{ item }}#}
+{#        {% endfor %}#}
+{#    </textarea>#}
+   <button id="d1"> 保存 </button>
+</body>
+     {% load static %}
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="{% static '/js/wangEditor.min.js' %}"></script>
+    <script type="text/javascript">
+        var E = window.wangEditor
+        var editor1 = new E('#div1', '#div2')  // 两个参数也可以传入 elem 对象，class 选择器
+        editor1.create()
+    </script>
+    <script type="text/javascript">
+        $('#d1').click(function (){
+            console.log(111111)
+               var text = $('#div2').html();
+            console.log(text)
+            $.ajax({
+                 url:'add_ajax',
+                 type:"POST",
+                dataType: 'list',
+                 data:{ aaa1:$('#div2').html(),aaa:"123456"},
+                 success:function (data){
+                       $('#div2').html(data)
+                    }
+                })
+            console.log(text)
+        })
+    </script>
+</html>
